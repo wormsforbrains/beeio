@@ -1,0 +1,4 @@
+X:/programming/cpp/beeio/cmake-build-debug/CMakeFiles/beeio.dir
+X:/programming/cpp/beeio/cmake-build-debug/CMakeFiles/main.dir
+X:/programming/cpp/beeio/cmake-build-debug/CMakeFiles/edit_cache.dir
+X:/programming/cpp/beeio/cmake-build-debug/CMakeFiles/rebuild_cache.dir

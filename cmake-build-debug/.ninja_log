@@ -1,0 +1,21 @@
+# ninja log v5
+0	408	6963065482013317	CMakeFiles/beeio.dir/beeio.cpp.obj	57e4d44f25390037
+556	713	6965966350531037	libbeeio.dll	6c26395a69281dcc
+556	713	6965966350531037	libbeeio.dll.a	6c26395a69281dcc
+0	156	6966019922744518	build.ninja	70f30659f11f36cf
+2	550	6964935644939881	CMakeFiles/main.dir/main.cpp.obj	2a5eba6fbb8a2b97
+4	567	6964143550874079	CMakeFiles/beeio.dir/src/sRGBColorSpace.cpp.obj	2473a58008350e3c
+714	797	6965966351374727	main.exe	c09de2c3ed43b87
+3	484	6964143550044081	CMakeFiles/beeio.dir/src/ColorModel.cpp.obj	6fb9b381a006a2af
+1	605	6964143551244068	CMakeFiles/beeio.dir/src/ColorSpace.cpp.obj	94d9d8c3ab1fd0ec
+7	556	6965966348984705	CMakeFiles/beeio.dir/src/jpeg.cpp.obj	83719d2cd1beee9e
+2	33	6964915807071863	CMakeFiles/beeio.dir/src/ImageDraw.cpp.obj	8fee92713e95418f
+3	32	6964915807061878	CMakeFiles/beeio.dir/src/Image.cpp.obj	d8479a60aa452749
+3	358	6965966346894703	CMakeFiles/beeio.dir/src/Marker.cpp.obj	df2d5b9ddc586779
+6	370	6965966347124741	CMakeFiles/beeio.dir/src/markers.cpp.obj	ac919043fd6aa05a
+4	270	6966139632657295	CMakeFiles/beeio.dir/src/Marker.cpp.obj	df2d5b9ddc586779
+8	563	6966139635587275	CMakeFiles/beeio.dir/src/jpeg.cpp.obj	83719d2cd1beee9e
+2	720	6966139637137244	CMakeFiles/beeio.dir/src/Image.cpp.obj	d8479a60aa452749
+3	742	6966144792971938	CMakeFiles/beeio.dir/src/Image.cpp.obj	d8479a60aa452749
+2	176	6966145168711453	CMakeFiles/beeio.dir/src/QuantizationTable.cpp.obj	5ff3099a01ccc196
+4	502	6966145171961444	CMakeFiles/beeio.dir/src/jpeg.cpp.obj	83719d2cd1beee9e
