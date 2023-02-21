@@ -5,6 +5,8 @@
 #include <QuantizationTable.h>
 
 #include <cstdint>
+#include <fstream>
+#include "Image.h"
 
 namespace beeio {
 
