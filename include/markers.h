@@ -10,6 +10,14 @@
 
 namespace beeio {
 
+  class SOI;
+
+  class EOI;
+
+  class APP0;
+
+  class DQT;
+
   class SOI : public Marker {
     public:
       SOI();
