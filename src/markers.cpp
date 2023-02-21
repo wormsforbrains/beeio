@@ -1,5 +1,6 @@
 #include <markers.h>
-#include "QuantizationTable.h"
+#include "discreteCosineTransform.h"
+#include "jpeg.h"
 
 namespace beeio {
 
