@@ -3,6 +3,13 @@
 
 namespace beeio {
 
+  const std::map<Image::ColorDepth, int> Image::colorDepthMap = {
+      {Image::ColorDepth::BINARY_BYTE, 8},
+      {Image::ColorDepth::GRAY_BYTE,   8},
+      {Image::ColorDepth::RGB_3BYTE,   24},
+      {Image::ColorDepth::RGBA_4BYTE,  32}
+  };
+
   Image Image::create(ColorDepth colorDepth, int width, int height) {
     Image img;
     img.colorDepth = colorDepth;
