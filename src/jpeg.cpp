@@ -5,8 +5,20 @@
 
 namespace beeio {
 
-  JPEG::JPEG(std::vector<unsigned char> image_data, int width, int height, int num_components)
-      : image_data_(std::move(image_data)), width_(width), height_(height), num_components_(num_components) {}
+  JPEG::JPEG(Image image, int width, int height, int num_components)
+      : image_(std::move(image)), width_(width), height_(height), num_components_(num_components) {
+    jpegQuantizationTable = std::vector<uint8_t>(64);
+    jpegQuantizationTable.assign({
+                                     16, 11, 10, 16, 24, 40, 51, 61,
+                                     12, 12, 14, 19, 26, 58, 60, 55,
+                                     14, 13, 16, 24, 40, 57, 69, 56,
+                                     14, 17, 22, 29, 51, 87, 80, 62,
+                                     18, 22, 37, 56, 68, 109, 103, 77,
+                                     24, 35, 55, 64, 81, 104, 113, 92,
+                                     49, 64, 78, 87, 103, 121, 120, 101,
+                                     72, 92, 95, 98, 112, 100, 103, 99
+                                 });
+  }
 
   void JPEG::save(const std::string &file_path) {
     std::basic_ofstream<uint8_t> file(file_path, std::ios::binary);
