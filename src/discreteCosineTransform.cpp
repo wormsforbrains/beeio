@@ -6,8 +6,8 @@
 
 namespace beeio {
 
-  std::vector<double> DCT(const Image &image) {
-    DataVector pixelValues = image.getData();
+  std::vector<double> DCT::discreteCosineTransform(const Image &image) {
+    std::vector<uint8_t> imgData = image.getPixelVector();
     int width = image.getWidth();
     int height = image.getHeight();
     std::vector<double> dctCoefficients(width * height);
@@ -20,8 +20,7 @@ namespace beeio {
         double sum = 0.0;
         for (int i = 0; i < width; i++) {
           for (int j = 0; j < height; j++) {
-            // FIXME: operator[] for DataVector and int
-            double pixel = pixelValues[i + j * width];
+            double pixel = imgData[i + j * width];
             double val = pixel * cos((2 * i + 1) * x * M_PI / (2 * width)) * cos((2 * j + 1) * y * M_PI / (2 * height));
             sum += val;
           }
