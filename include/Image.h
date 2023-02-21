@@ -38,6 +38,7 @@ namespace beeio {
       ColorDepth colorDepth {};
       int width {};
       int height {};
+      std::vector<uint8_t> data;
 
       // Constructors
       Image() = default;
