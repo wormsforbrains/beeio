@@ -19,7 +19,7 @@ namespace beeio {
 
       void save(const std::string &file_path);
     private:
-      std::vector<unsigned char> image_data_;
+      Image image_;
       int width_;
       int height_;
       int num_components_;
