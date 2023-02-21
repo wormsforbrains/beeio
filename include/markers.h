@@ -18,6 +18,9 @@ namespace beeio {
 
   class DQT;
 
+  std::vector<uint8_t> &operator <<(std::vector<uint8_t> &v, const uint8_t &value);
+  std::vector<uint8_t> &operator <<(std::vector<uint8_t> &v1, const std::vector<uint8_t> &v2);
+
   class SOI : public Marker {
     public:
       SOI();
