@@ -16,11 +16,12 @@ namespace beeio {
       Marker() = default;
 
     protected:
-      bool hasData {};
-      uint8_t markerPrefix {};
-      uint8_t markerType {};
-      std::vector<uint8_t> segmentLength;
-      std::vector<uint8_t> segmentData;
+      bool has_data {};
+      uint8_t marker_prefix {};
+      uint8_t marker_type {};
+      std::vector<uint8_t> marker_data;
+      std::vector<uint8_t> segment_length;
+      std::vector<uint8_t> segment_data;
   };
 
 } // beeio
