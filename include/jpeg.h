@@ -13,7 +13,9 @@ namespace beeio {
 
   class JPEG {
     public:
-      JPEG(std::vector<unsigned char> image_data, int width, int height, int num_components = 3);
+
+      JPEG(Image image, int width, int height, int num_components = 3);
+
       void save(const std::string &file_path);
     private:
       std::vector<unsigned char> image_data_;
