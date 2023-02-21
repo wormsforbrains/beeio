@@ -11,4 +11,13 @@ namespace beeio {
   bool hasData = false;
   std::vector<uint8_t> segmentLength(2);
 
+  std::vector<uint8_t> Marker::getMarkerData() const {
+    return marker_data;
+  }
+
+  void Marker::pack() {
+    marker_data = std::vector<uint8_t>(2);
+    marker_data.assign({marker_prefix, marker_type});
+  }
+
 } // beeio
