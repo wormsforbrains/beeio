@@ -7,8 +7,6 @@
 
 namespace beeio {
 
-  typedef std::variant<std::vector<uint8_t>, std::vector<uint32_t>> DataVector;
-
 
   class Image {
     public:
@@ -25,23 +23,17 @@ namespace beeio {
       // Getters
       int getWidth() const;
       int getHeight() const;
-      DataVector getData() const;
 
       // Member methods
       void save(const std::string &filepath, const std::string &format) const;
-
     private:
       // Member variables
       ColorDepth colorDepth {};
       int width {};
       int height {};
-      DataVector data;
 
       // Constructors
       Image() = default;
-
-      // Member methods
-      void setDataVectorType();
   };
 
 }
