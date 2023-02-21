@@ -17,7 +17,6 @@ namespace beeio {
     return colorvalue;
   }
 
-
   std::vector<float> beeio::sRGBColorSpace::fromRGB(std::vector<float> colorvalue) {
     std::vector<float> srgb;
     for (float value: colorvalue) {
@@ -29,7 +28,6 @@ namespace beeio {
     }
     return srgb;
   }
-
 
   std::vector<float> beeio::sRGBColorSpace::toCIEXYZ(std::vector<float> colorvalue) {
     std::vector<float> XYZ;
@@ -45,7 +43,6 @@ namespace beeio {
     }
     return XYZ;
   }
-
 
   std::vector<float> beeio::sRGBColorSpace::fromCIEXYZ(std::vector<float> XYZ) {
     // Convert to the RGB color space
