@@ -123,10 +123,49 @@ namespace beeio {
   }
   void DQT::init() { pack(); }
 
+  SOF0::SOF0(uint16_t img_width, uint16_t img_height, uint8_t n_components) {
+    image_height = std::vector<uint8_t>(2);
+    image_width = std::vector<uint8_t>(2);
+
+    has_data = true;
+    marker_prefix = 0xFF;
+    marker_type = 0xC0;
+    num_components = n_components;
+    const uint16_t components_length = n_components * 3;
+    segment_length << (components_length >> 8) << (components_length & 0xff);
+
+    image_width << (img_width >> 8) << (img_width & 0xff);
+    image_height << (img_height >> 8) << (img_height & 0xff);
+
+    for (uint8_t i = 0; i < n_components; i++) {
+      components << i << 0x11 << 0x00;
+    }
 
     init();
   }
 
+  void SOF0::pack() {
+    // Concatenate the values of the two bytes in the `segment_length` vector to get one int
+    const uint16_t segment_length_u_16 = (segment_length[0] << 8) | segment_length[1];
+
+    // Calculate the length of the marker by adding 2 (marker prefix/type length) to the segment length
+    const uint16_t marker_length = segment_length_u_16 + 2;
+
+    // Initialize segment_data's size to the segment length
+    segment_data = std::vector<uint8_t>(segment_length_u_16);
+
+    // Initialize marker_data's size to the marker length (marker header + segment)
+    marker_data = std::vector<uint8_t>(marker_length);
+
+    // Pack marker_prefix and marker_type into marker_data
+    marker_data << marker_prefix << marker_type;
+
+    // Pack the segment's data into segment_data in the correct order
+    segment_data << segment_length << precision << image_height << image_width << num_components << components;
+
+    // Append segment_data to marker_data
+    marker_data << segment_data;
   }
 
+  void SOF0::init() { pack(); }
 }
