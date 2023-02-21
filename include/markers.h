@@ -66,8 +66,35 @@ namespace beeio {
       void pack() override;
   };
 
+  class SOF0 : public Marker {
+    public:
+      SOF0(uint16_t image_width, uint16_t image_height, uint8_t n_components);
+
     private:
-      QuantizationTable quantizationTable;
+      uint8_t precision {};
+      std::vector<uint8_t> image_height;
+      std::vector<uint8_t> image_width;
+      uint8_t num_components {};
+      std::vector<uint8_t> components;
+
+      void init();
+      void pack() override;
+  };
+
+  class DHT : public Marker {
+    public:
+      DHT();
+
+    private:
+      void init();
+  };
+
+  class SOS : public Marker {
+    public:
+      SOS();
+
+    private:
+      void init();
   };
 
 }
