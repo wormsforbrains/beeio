@@ -15,6 +15,10 @@ namespace beeio {
     public:
       Marker() = default;
 
+      std::vector<uint8_t> getMarkerData() const;
+
+      virtual void pack();
+
     protected:
       bool has_data {};
       uint8_t marker_prefix {};
