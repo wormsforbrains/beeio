@@ -1,12 +1,9 @@
 #ifndef BEEIO_IMAGE_H
 #define BEEIO_IMAGE_H
 
-#include <ImageDraw.h>
-
 #include <vector>
 #include <map>
 #include <string>
-#include <variant>
 
 namespace beeio {
 
