@@ -50,7 +50,68 @@ namespace beeio {
     return height;
   }
 
+  std::vector<uint8_t> Image::getPixelVector() const {
     return data;
+  }
+
+  std::vector<uint8_t> Image::getPixel(int x, int y) const {
+    std::vector<uint8_t> pixel;
+    const uint8_t byteDepth = colorDepthMap.at(colorDepth) >> 3;
+    const int pixelIndex = y * width + x * byteDepth;
+    switch (colorDepth) {
+      case BINARY_BYTE: {
+        uint8_t value = data[pixelIndex];
+        pixel.assign({value});
+        break;
+      }
+      case GRAY_BYTE: {
+        uint8_t value = data[pixelIndex];
+        pixel.assign({value});
+        break;
+      }
+      case RGB_3BYTE: {
+        uint8_t r = data[pixelIndex];
+        uint8_t g = data[pixelIndex + 1];
+        uint8_t b = data[pixelIndex + 2];
+        pixel.assign({r, g, b});
+        break;
+      }
+      case RGBA_4BYTE: {
+        uint8_t r = data[pixelIndex];
+        uint8_t g = data[pixelIndex + 1];
+        uint8_t b = data[pixelIndex + 2];
+        uint8_t a = data[pixelIndex + 3];
+        pixel.assign({r, g, b, a});
+        break;
+      }
+    }
+    return pixel;
+  }
+  void Image::setPixelVector(const std::vector<uint8_t> &vector) {
+    data = vector;
+  }
+  void Image::setPixel(int x, int y, int color) {
+    const uint8_t byteDepth = colorDepthMap.at(colorDepth) >> 3;
+    const int pixelIndex = y * width + x * byteDepth;
+    if (colorDepth == RGB_3BYTE) {
+      uint8_t r = color >> 16;
+      uint8_t g = color >> 8 & 0xff;
+      uint8_t b = color & 0xff;
+      data[pixelIndex] = r;
+      data[pixelIndex + 1] = g;
+      data[pixelIndex + 2] = b;
+    } else if (colorDepth == RGBA_4BYTE) {
+      uint8_t r = color >> 24;
+      uint8_t g = color >> 16 & 0xff;
+      uint8_t b = color >> 8 & 0xff;
+      uint8_t a = color & 0xff;
+      data[pixelIndex] = r;
+      data[pixelIndex + 1] = g;
+      data[pixelIndex + 2] = b;
+      data[pixelIndex + 3] = a;
+    } else {
+      data[pixelIndex] = color;
+    }
   }
 
   void Image::fill(int color) {
