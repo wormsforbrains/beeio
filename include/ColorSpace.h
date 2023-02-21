@@ -1,7 +1,6 @@
 #ifndef BEEIO_COLORSPACE_H
 #define BEEIO_COLORSPACE_H
 
-
 #include <string>
 #include <vector>
 
@@ -41,6 +40,5 @@ namespace beeio {
   };
 
 }
-
 
 #endif //BEEIO_COLORSPACE_H
