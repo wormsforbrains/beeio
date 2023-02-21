@@ -56,7 +56,16 @@ namespace beeio {
 
   class DQT : public Marker {
     public:
-      DQT(const QuantizationTable &quantizationTable);
+      explicit DQT(uint8_t precision, uint8_t id);
+
+    private:
+      uint8_t precisionAndId {};
+      std::vector<uint8_t> quantizationTable;
+
+      void init();
+      void pack() override;
+  };
+
     private:
       QuantizationTable quantizationTable;
   };
