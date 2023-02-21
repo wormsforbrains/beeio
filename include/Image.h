@@ -31,6 +31,7 @@ namespace beeio {
       void setPixel(int x, int y, int color);
 
       // Member methods
+      void fill(int color);
       void save(const std::string &filepath, const std::string &format) const;
     private:
       // Member variables
