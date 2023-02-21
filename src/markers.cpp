@@ -20,12 +20,15 @@ namespace beeio {
     marker_type = 0xD8;
     init();
   }
+  void SOI::init() { pack(); }
 
   // EOI
   EOI::EOI() : Marker() {
     marker_prefix = 0xFF;
     marker_type = 0xD9;
+    init();
   }
+  void EOI::init() { pack(); }
 
   // APP0
   APP0::APP0() : Marker() {
@@ -46,6 +49,34 @@ namespace beeio {
     yDensity.assign({0x00, 0x48});
     xThumbnail = 0x00;
     yThumbnail = 0x00;
+
+    init();
+  }
+  void APP0::pack() {
+    // Concatenate the values of the two bytes in the `segment_length` vector to get one int
+    const uint16_t segmentLengthU16 = (segment_length[0] << 8) | segment_length[1];
+
+    // Calculate the length of the marker by adding 2 (marker prefix/type length) to the segment length
+    const uint16_t markerLength = segmentLengthU16 + 2;
+
+    // Initialize segment_data's size to the segment length
+    segment_data = std::vector<uint8_t>(segmentLengthU16);
+
+    // Initialize marker_data's size to the marker length (marker header + segment)
+    marker_data = std::vector<uint8_t>(markerLength);
+
+    // Pack marker_prefix and marker_type into marker_data
+    marker_data << marker_prefix << marker_type;
+
+    // Pack the segment's data into segment_data in the correct order
+    segment_data << segment_length << jfif << version << densityUnits;
+    segment_data << xDensity << yDensity << xThumbnail << yThumbnail;
+
+    // Append segment_data to marker_data
+    marker_data << segment_data;
+  }
+  void APP0::init() { pack(); }
+
   }
 
   DQT::DQT(const QuantizationTable &quantizationTable) : quantizationTable(quantizationTable) {
