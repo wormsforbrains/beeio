@@ -23,6 +23,12 @@ namespace beeio {
       // Getters
       int getWidth() const;
       int getHeight() const;
+      std::vector<uint8_t> getPixelVector() const;
+      std::vector<uint8_t> getPixel(int x, int y) const;
+
+      // Setters
+      void setPixelVector(const std::vector<uint8_t> &vector);
+      void setPixel(int x, int y, int color);
 
       // Member methods
       void save(const std::string &filepath, const std::string &format) const;
