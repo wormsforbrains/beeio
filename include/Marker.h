@@ -7,6 +7,7 @@
 
 namespace beeio {
 
+  class Marker;
   class Marker {
     public:
       Marker() = default;
