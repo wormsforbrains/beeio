@@ -1,8 +1,11 @@
 #ifndef BEEIO_JPEG_H
 #define BEEIO_JPEG_H
 
+#include <markers.h>
+
 #include <vector>
 #include <string>
+#include "Image.h"
 
 namespace beeio {
 
