@@ -1,6 +1,8 @@
 #ifndef BEEIO_DISCRETECOSINETRANSFORM_H
 #define BEEIO_DISCRETECOSINETRANSFORM_H
 
+#include <Image.h>
+
 #include <vector>
 #include <cstdint>
 
