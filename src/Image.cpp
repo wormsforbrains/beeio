@@ -33,6 +33,13 @@ namespace beeio {
   }
 
   void beeio::Image::save(const std::string &filepath, const std::string &format) const {
+    if (format == "jpg") {
+      const uint8_t numComponents = colorDepthMap.at(colorDepth) >> 3;
+      JPEG jpg(*this, width, height, numComponents);
+      jpg.save(filepath);
+    } else {
+      throw std::invalid_argument("Invalid format provided. Valid formats: 'jpg'.");
+    }
   }
 
   int Image::getWidth() const {
