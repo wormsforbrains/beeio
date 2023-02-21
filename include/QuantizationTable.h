@@ -2,6 +2,7 @@
 #define BEEIO_QUANTIZATIONTABLE_H
 
 #include <vector>
+#include <cstdint>
 
 namespace beeio {
 
