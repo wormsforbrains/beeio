@@ -16,14 +16,15 @@ namespace beeio {
 
   // SOI
   SOI::SOI() : Marker() {
-    markerPrefix = 0xFF;
-    markerType = 0xD8;
+    marker_prefix = 0xFF;
+    marker_type = 0xD8;
+    init();
   }
 
   // EOI
   EOI::EOI() : Marker() {
-    markerPrefix = 0xFF;
-    markerType = 0xD9;
+    marker_prefix = 0xFF;
+    marker_type = 0xD9;
   }
 
   // APP0
@@ -33,9 +34,9 @@ namespace beeio {
     xDensity = std::vector<uint8_t>(2);
     yDensity = std::vector<uint8_t>(2);
 
-    hasData = true;
-    markerPrefix = 0xFF;
-    markerType = 0xE0;
+    has_data = true;
+    marker_prefix = 0xFF;
+    marker_type = 0xE0;
 
     segmentLength.assign({0x00, 0x10});
     jfif.assign({'J', 'F', 'I', 'F', 0x00});
