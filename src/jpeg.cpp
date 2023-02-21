@@ -9,7 +9,7 @@ namespace beeio {
       : image_data_(std::move(image_data)), width_(width), height_(height), num_components_(num_components) {}
 
   void JPEG::save(const std::string &file_path) {
-    std::ofstream file(file_path, std::ios::binary);
+    std::basic_ofstream<uint8_t> file(file_path, std::ios::binary);
     _write_header(file);
     _write_image_data(file);
   }
