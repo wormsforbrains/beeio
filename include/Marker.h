@@ -8,6 +8,9 @@
 namespace beeio {
 
   class Marker;
+
+  std::basic_ofstream<uint8_t> &operator <<(std::basic_ofstream<uint8_t> &file, const Marker &marker);
+
   class Marker {
     public:
       Marker() = default;
