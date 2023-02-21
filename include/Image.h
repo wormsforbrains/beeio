@@ -18,7 +18,7 @@ namespace beeio {
 
       // Factory methods
       static Image create(ColorDepth colorDepth, int width, int height);
-      static Image create(ColorDepth colorDepth, int width, int height, uint32_t color);
+      static Image create(ColorDepth colorDepth, int width, int height, int color);
 
       // Getters
       int getWidth() const;
