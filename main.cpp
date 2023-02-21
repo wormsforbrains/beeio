@@ -1,17 +1,10 @@
-#include <fstream>
-#include <vector>
-#include <jpeg.h>
+#include <Image.h>
 
 int main() {
-  int width = 200;
-  int height = 300;
-  std::vector<unsigned char> image_data(width * height);
-
-  for (unsigned char & i : image_data) {
-    i = 0xff;
-  }
-
-  beeio::JPEG jpeg(image_data, width, height);
-  jpeg.save("image.jpg");
+  int width = 5;
+  int height = 5;
+  beeio::Image img = beeio::Image::create(beeio::Image::BINARY_BYTE, width, height);
+  img.fill(1);
+  img.save("test.jpg", "jpg");
   return 0;
 }
