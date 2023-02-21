@@ -24,11 +24,17 @@ namespace beeio {
   class SOI : public Marker {
     public:
       SOI();
+
+    private:
+      void init();
   };
 
   class EOI : public Marker {
     public:
       EOI();
+
+    private:
+      void init();
   };
 
   class APP0 : public Marker {
@@ -43,6 +49,9 @@ namespace beeio {
       std::vector<uint8_t> yDensity;
       uint8_t xThumbnail;
       uint8_t yThumbnail;
+
+      void init();
+      void pack() override;
   };
 
   class DQT : public Marker {
