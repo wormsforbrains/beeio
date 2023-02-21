@@ -9,6 +9,8 @@
 
 namespace beeio {
 
+  class JPEG;
+
   class JPEG {
     public:
       JPEG(std::vector<unsigned char> image_data, int width, int height, int num_components = 3);
