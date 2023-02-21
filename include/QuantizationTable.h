@@ -9,7 +9,14 @@ namespace beeio {
   class QuantizationTable;
 
   class QuantizationTable {
-    explicit QuantizationTable(std::vector<double> dctCoefficients);
+    public:
+      std::vector<uint8_t> quantizedCoefficients;
+
+      explicit QuantizationTable(std::vector<double>& dctCoefficients);
+
+      size_t size() const;
+      std::vector<uint8_t>::const_iterator begin() const;
+      std::vector<uint8_t>::const_iterator end() const;
   };
 
 } // beeio
