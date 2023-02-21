@@ -40,13 +40,13 @@ namespace beeio {
     has_data = true;
     marker_prefix = 0xFF;
     marker_type = 0xE0;
+    segment_length << 0x00 << 0x10;
 
-    segmentLength.assign({0x00, 0x10});
-    jfif.assign({'J', 'F', 'I', 'F', 0x00});
-    version.assign({0x01, 0x02});
+    jfif << 'J' << 'F' << 'I' << 'F' << 0x00;
+    version << 0x01 << 0x02;
     densityUnits = 0x01;
-    xDensity.assign({0x00, 0x48});
-    yDensity.assign({0x00, 0x48});
+    xDensity << 0x00 << 0x48;
+    yDensity << 0x00 << 0x48;
     xThumbnail = 0x00;
     yThumbnail = 0x00;
 
