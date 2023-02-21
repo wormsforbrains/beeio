@@ -7,6 +7,7 @@
 
 namespace beeio {
 
+  class Image;
 
   class Image {
     public:
