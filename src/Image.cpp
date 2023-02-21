@@ -8,11 +8,19 @@ namespace beeio {
     img.colorDepth = colorDepth;
     img.width = width;
     img.height = height;
+    const uint8_t byteDepth = colorDepthMap.at(colorDepth) >> 3; // x >> 3 == x / 8
+    img.data = std::vector<uint8_t>(width * height * byteDepth);
     return img;
   }
 
-  Image Image::create(ColorDepth colorDepth, int width, int height, uint32_t color) {
+  Image Image::create(ColorDepth colorDepth, int width, int height, int color) {
     Image img;
+    img.colorDepth = colorDepth;
+    img.width = width;
+    img.height = height;
+    const uint8_t byteDepth = colorDepthMap.at(colorDepth) >> 3; // x >> 3 == x / 8
+    img.data = std::vector<uint8_t>(width * height * byteDepth);
+    img.fill(color);
     return img;
   }
 
