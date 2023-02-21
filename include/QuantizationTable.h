@@ -6,6 +6,8 @@
 
 namespace beeio {
 
+  class QuantizationTable;
+
   class QuantizationTable {
     explicit QuantizationTable(std::vector<double> dctCoefficients);
   };
