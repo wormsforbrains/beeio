@@ -6,6 +6,8 @@
 
 namespace beeio {
 
+  class ColorModel;
+
   class ColorModel {
     public:
       ColorModel(int numComponents, int type);
