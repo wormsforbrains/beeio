@@ -77,16 +77,56 @@ namespace beeio {
   }
   void APP0::init() { pack(); }
 
+  /*
+   *      marker prefix:  1 byte  (0xFF)
+   *        marker type:  1 byte  (0xDB)
+   *     segment length:  2 bytes (0x00 0x43) (if precision is 8-bit, else (0x00 0x83))
+   *          precision:  4 bits  (0b0000 (8-bit)) or (0b0001 (16-bit))
+   *           table id:  4 bits  (0b0000 to 0b1111)
+   * quantization table: 64 bytes (if precision is 8-bit, else 128 bytes)
+   *         total size: 67 bytes (if precision is 8-bit, else 131 bytes)
+   */
+  DQT::DQT(uint8_t precision, uint8_t id) {
+    quantizationTable = std::vector<uint8_t>(64);
+
+    has_data = true;
+    marker_prefix = 0xFF;
+    marker_type = 0xDB;
+    segment_length << 0x00 << 0x43;
+
+    precisionAndId << (precision << 4) | id;
+    quantizationTable << JPEG::jpegQuantizationTable;
+
+    init();
+  }
+  void DQT::pack() {
+    // Concatenate the values of the two bytes in the `segment_length` vector to get one int
+    const uint16_t segmentLengthU16 = (segment_length[0] << 8) | segment_length[1];
+
+    // Calculate the length of the marker by adding 2 (marker prefix/type length) to the segment length
+    const uint16_t markerLength = segmentLengthU16 + 2;
+
+    // Initialize segment_data's size to the segment length
+    segment_data = std::vector<uint8_t>(segmentLengthU16);
+
+    // Initialize marker_data's size to the marker length (marker header + segment)
+    marker_data = std::vector<uint8_t>(markerLength);
+
+    // Pack marker_prefix and marker_type into marker_data
+    marker_data << marker_prefix << marker_type;
+
+    // Pack the segment's data into segment_data in the correct order
+    segment_data << segment_length << precisionAndId << quantizationTable;
+
+    // Append segment_data to marker_data
+    marker_data << segment_data;
+  }
+  void DQT::init() { pack(); }
+
+
+    init();
   }
 
-  DQT::DQT(const QuantizationTable &quantizationTable) : quantizationTable(quantizationTable) {
-    hasData = true;
-    markerPrefix = 0xFF;
-    markerType = 0xDB;
-    uint16_t tableLength = quantizationTable.size() + 2;
-    segmentLength.assign({static_cast<uint8_t>(tableLength >> 0x08), static_cast<uint8_t>(tableLength & 0xFF)});
-    segmentData.assign({0});
-    segmentData.insert(segmentData.end(), quantizationTable.begin(), quantizationTable.end());
   }
 
 }
