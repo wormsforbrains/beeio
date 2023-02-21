@@ -8,7 +8,12 @@
 
 namespace beeio {
 
-  std::vector<double> discreteCosineTransform(const std::vector<uint32_t> &image);
+  class DCT;
+
+  class DCT {
+    public:
+      static std::vector<double> discreteCosineTransform(const Image &img);
+  };
 
 }
 
