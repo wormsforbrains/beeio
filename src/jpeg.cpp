@@ -46,9 +46,10 @@ namespace beeio {
     file.write(reinterpret_cast<char *>(&num_components_), sizeof(unsigned char));
   }
 
-  void JPEG::_write_image_data(std::ofstream &file) {
+  void JPEG::_write_image_data(std::basic_ofstream<uint8_t> &file) {
     // Write image data
-    file.write(reinterpret_cast<char *>(image_data_.data()), static_cast<std::streamsize>(image_data_.size()));
+    std::vector<uint8_t> imageData = image_.getPixelVector();
+    file.write(imageData.data(), static_cast<std::streamsize>(imageData.size()));
 
     // Write End of Image marker
     file << (unsigned char)0xff << (unsigned char)0xd9;
