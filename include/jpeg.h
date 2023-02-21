@@ -23,8 +23,9 @@ namespace beeio {
       int width_;
       int height_;
       int num_components_;
-      void _write_header(std::ofstream &file);
-      void _write_image_data(std::ofstream &file);
+
+      void _write_header(std::basic_ofstream<uint8_t> &file);
+      void _write_image_data(std::basic_ofstream<uint8_t> &file);
   };
 
 }
