@@ -1,12 +1,13 @@
 #ifndef BEEIO_SRGBCOLORSPACE_H
 #define BEEIO_SRGBCOLORSPACE_H
 
-
 #include <ColorSpace.h>
 
 #include <vector>
 
 namespace beeio {
+
+  class sRGBColorSpace;
 
   class sRGBColorSpace : public beeio::ColorSpace {
     public:
@@ -19,6 +20,5 @@ namespace beeio {
   };
 
 }
-
 
 #endif //BEEIO_SRGBCOLORSPACE_H
