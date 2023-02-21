@@ -1,5 +1,4 @@
 #include "discreteCosineTransform.h"
-#include "Image.h"
 
 #include <cmath>
 #include <vector>
