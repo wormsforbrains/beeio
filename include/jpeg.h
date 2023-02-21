@@ -13,6 +13,7 @@ namespace beeio {
 
   class JPEG {
     public:
+      static std::vector<uint8_t> jpegQuantizationTable;
 
       JPEG(Image image, int width, int height, int num_components = 3);
 
