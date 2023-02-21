@@ -1,5 +1,6 @@
 #include <Image.h>
-#include <ImageDraw.h>
+#include <stdexcept>
+#include <jpeg.h>
 
 namespace beeio {
 
