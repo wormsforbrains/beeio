@@ -18,6 +18,7 @@ namespace beeio {
       JPEG(Image image, int width, int height, int num_components = 3);
 
       void save(const std::string &file_path);
+
     private:
       Image image_;
       int width_;
@@ -29,6 +30,5 @@ namespace beeio {
   };
 
 }
-
 
 #endif //BEEIO_JPEG_H
